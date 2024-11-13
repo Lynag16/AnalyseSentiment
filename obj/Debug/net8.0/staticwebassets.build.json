@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "pBWyT/zmSQyRT4inJxLryut2FSNClO5ARRIfs2+F9Rg=",
+  "Source": "AnalyseSentiment",
+  "BasePath": "_content/AnalyseSentiment",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
