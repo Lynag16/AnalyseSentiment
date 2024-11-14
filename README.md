@@ -18,6 +18,7 @@ Le but de ce TP est la création d'une application simple de prédiction de sent
 
 Dans ce repository vous trouverez un fichier (commentdata.txt) contenant un jeu de données annoté avec des sentiments où chaque ligne contient un commentaire et un label de sentiment.
 
+Origine de la dataset est microsoft learn.
 ## **2\. Préparer l'environnement**
 
 ### a.  Vérifiez si .NET est installé :
@@ -261,4 +262,4 @@ while (true)
 * * * * *
 
 
-\uD83C\uDF89 **Et un grand MERCI !**
+**Et un grand MERCI !**

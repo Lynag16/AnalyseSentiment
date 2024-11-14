@@ -12,24 +12,24 @@ namespace WebsiteCommentPredictor
     {
         static void Main(string[] args)
         {
-            string yelpDataPath = Path.Combine(Environment.CurrentDirectory, "Data", "yelp_labelled.txt");
+            string yelpDataPath = Path.Combine(Environment.CurrentDirectory, "Data", "commentdata.txt");
             MLContext mlContext = new MLContext();
 
-            // Load data and train the model
+            // Charger les data
             var splitDataView = LoadData(mlContext, yelpDataPath);
             ITransformer model = BuildAndTrainModel(mlContext, splitDataView.TrainSet);
 
-            // Interactively predict sentiment for user input
+            
             Console.WriteLine("Enter a comment to analyze sentiment:");
             while (true)
             {
                 string userInput = Console.ReadLine();
 
-                // Exit condition for the loop
+             
                 if (string.IsNullOrEmpty(userInput))
                     break;
 
-                // Get prediction for the entered review
+             
                 GetPredictionForReviewContent(mlContext, model, userInput);
 
                 Console.WriteLine("Enter another comment to analyze sentiment (or press Enter to exit):");
