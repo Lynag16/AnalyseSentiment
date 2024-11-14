@@ -6,7 +6,8 @@
 
 Le but de ce TP est la création d'une application de prédiction de sentiment en utilisant ML.NET, un framework d'apprentissage automatique pour .NET.
 
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/238e7704-69e2-48d7-b48d-7746fe9a82f0)
+
 
 ## Prérequis
 - .NET SDK .
