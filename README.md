@@ -104,10 +104,10 @@ AnalyseSentiment/
 - Créez un répertoire `Data` pour stocker les fichiers nécessaires.  
 - Copiez le fichier de données dans ce répertoire.  
 
-#### **5.2. Classe SentimentData **  
+#### **5.2. Classe SentimentData**  
 - Dans le dossier Models, ajoutez une classe pour représenter les données et les prédictions (colonnes pour le texte, label, probabilité, etc.).  
 
-#### **5.3. Service **  
+#### **5.3. Service**  
 - Implémentez `SentimentService.cs` pour encapsuler la logique :  
   - Charger les données.  
   - Diviser en ensembles d'entraînement et de test.  
@@ -119,16 +119,16 @@ AnalyseSentiment/
 
 #### **6.1. Fichiers HTML et Razor**  
 
-- **`Index.cshtml` :**  
+- **Index.cshtml :**  
   - Formulaire permettant à l’utilisateur de saisir un commentaire.  
   - Affichage du résultat de l’analyse de sentiment.  
 
-- **`Index.cshtml.cs` :**  
+- **Index.cshtml.cs :**  
   - Logique côté serveur pour traiter le formulaire.  
   - Connexion avec `SentimentService` pour effectuer les prédictions.  
 
 #### **6.2. CSS pour le Frontend**  
-- **`site.css` :**  
+- **site.css :**  
   - Ajoutez du style pour rendre l'interface utilisateur conviviale et attrayante.  
 
 ---
