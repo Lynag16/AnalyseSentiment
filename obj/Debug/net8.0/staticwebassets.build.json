@@ -1,11 +1,58 @@
 {
   "Version": 1,
-  "Hash": "pBWyT/zmSQyRT4inJxLryut2FSNClO5ARRIfs2+F9Rg=",
+  "Hash": "StRxkp8armCq3b1WOL+/koL/RTYypMoNNujRA6NZwmI=",
   "Source": "AnalyseSentiment",
   "BasePath": "_content/AnalyseSentiment",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "AnalyseSentiment/wwwroot",
+      "Source": "AnalyseSentiment",
+      "ContentRoot": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/",
+      "BasePath": "_content/AnalyseSentiment",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/css/site.css",
+      "SourceId": "AnalyseSentiment",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/",
+      "BasePath": "_content/AnalyseSentiment",
+      "RelativePath": "css/site.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/favicon.ico",
+      "SourceId": "AnalyseSentiment",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/",
+      "BasePath": "_content/AnalyseSentiment",
+      "RelativePath": "favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/favicon.ico"
+    }
+  ]
 }

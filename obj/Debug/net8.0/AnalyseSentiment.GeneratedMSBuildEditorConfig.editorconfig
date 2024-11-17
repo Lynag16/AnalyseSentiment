@@ -17,3 +17,7 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = /home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment
 build_property._RazorSourceGeneratorDebug = 
+
+[/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
