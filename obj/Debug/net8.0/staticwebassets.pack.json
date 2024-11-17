@@ -1,12 +1,24 @@
 {
   "Files": [
     {
-      "Id": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/css/site.css",
-      "PackagePath": "staticwebassets/css/site.css"
+      "Id": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/css/styles.css",
+      "PackagePath": "staticwebassets/css/styles.css"
     },
     {
       "Id": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/js/app.js",
+      "PackagePath": "staticwebassets/js/app.js"
+    },
+    {
+      "Id": "/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/wwwroot/js/index.html",
+      "PackagePath": "staticwebassets/js/index.html"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.AnalyseSentiment.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -71,72 +71,54 @@ Naviguez dans le dossier du projet et organisez les fichiers nécessaires, en su
 
 AnalyseSentiment/ 
 │
-├── Data/                        # Dossier contenant les données
-│   └── commentdata.txt          # Fichier de données des commentaires annotés
+├── Data/                        
+│   └── commentdata.txt          
 │
-├── Models/                      # Contient les classes de données et de prédiction
-│   ├── SentimentData.cs         # Classes SentimentData et SentimentPrediction
+├── Models/                      
+│   ├── SentimentData.cs        
 │
-├── Pages/                       # Pages Razor pour l'interface web
-│   ├── Index.cshtml             # Page principale où les utilisateurs saisissent des commentaires
-│   ├── Index.cshtml.cs          # Code-behind pour la page principale
+├── Controllers/                       
+│   ├── SentimentControllers.cs     
+│ 
 │
-├── Services/                    # Services de l'application pour la logique réutilisable
-│   ├── SentimentAnalyzer.cs     # Contient la logique pour l'entraînement et la prédiction des sentiments
+├── Services/                   
+│   ├── SentimentService.cs      
 │
-├── wwwroot/                     # Fichiers statiques pour l'application web
+├── wwwroot/                     
 │   ├── css/
-│   │   └── site.css             # Styles personnalisés pour l'interface web
+│   │   └── styles.css     
+│   ├── js/
+│   │   └── app.js     
+│   │   └── index.html         
 │
-├── Properties/                  # Répertoire de configuration
-│   └── launchSettings.json      # Configuration pour l'exécution de l'application
+├── Properties/                  
+│   └── launchSettings.json      
 │
-├── AnalyseSentiment.csproj      # Fichier de projet
+├── AnalyseSentiment.csproj      
 │
-├── Program.cs                   # Point d'entrée de l'application
+├── Program.cs                   
 │
-└── appsettings.json             # Configuration de l'application
+└── appsettings.json             
 
 ```
 
 
-#### **5.1. Dossier pour les Données**  
-- Créez un répertoire `Data` pour stocker les fichiers nécessaires.  
-- Copiez le fichier de données dans ce répertoire.  
-
-#### **5.2. Classe SentimentData**  
-- Dans le dossier Models, ajoutez une classe pour représenter les données et les prédictions (colonnes pour le texte, label, probabilité, etc.).  
-
-#### **5.3. Service**  
-- Implémentez `SentimentService.cs` pour encapsuler la logique :  
-  - Charger les données.  
-  - Diviser en ensembles d'entraînement et de test.  
-  - Construire et entraîner le modèle.  
-  - Ajouter la prédiction.  
 ---
 
-## 6. Ajouter une Interface Web 
-
-#### **6.1. Fichiers HTML et Razor**  
-
-- **Index.cshtml :**  
-  - Formulaire permettant à l’utilisateur de saisir un commentaire.  
-  - Affichage du résultat de l’analyse de sentiment.  
-
-- **Index.cshtml.cs :**  
-  - Logique côté serveur pour traiter le formulaire.  
-  - Connexion avec `SentimentService` pour effectuer les prédictions.  
-
-#### **6.2. CSS pour le Frontend**  
-- **site.css :**  
-  - Ajoutez du style pour rendre l'interface utilisateur conviviale et attrayante.  
-
----
-
-### **7. Compiler et Exécuter**  
+### **6. Compiler et Exécuter**  
 - Compilez le projet avec `dotnet build` pour vérifier les erreurs.  
 - Lancez l'application avec `dotnet run`.  
-- Accédez à l'application via le navigateur à l'URL affichée dans la console.  
+
+
+
+### **7. Tester**  
+```bash
+curl -X POST http://localhost:5121/api/sentiment/predict \
+-H "Content-Type: application/json" \
+-d "\"I love this product! It's amazing.\""
+
+```
+
 
 
 **Et un grand MERCI !**

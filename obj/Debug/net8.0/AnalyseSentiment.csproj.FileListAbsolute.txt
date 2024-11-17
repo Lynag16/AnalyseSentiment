@@ -383,8 +383,6 @@
 /home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/obj/Debug/net8.0/AnalyseSentiment.csproj.CoreCompileInputs.cache
 /home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/obj/Debug/net8.0/AnalyseSentiment.MvcApplicationPartsAssemblyInfo.cs
 /home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/obj/Debug/net8.0/AnalyseSentiment.MvcApplicationPartsAssemblyInfo.cache
-/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/obj/Debug/net8.0/AnalyseSentiment.RazorAssemblyInfo.cache
-/home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/obj/Debug/net8.0/AnalyseSentiment.RazorAssemblyInfo.cs
 /home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/obj/Debug/net8.0/AnalyseSentiment.sourcelink.json
 /home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/obj/Debug/net8.0/staticwebassets.build.json
 /home/m2ipint/lynda.agouazi.etu/M2_MIAGE/ARI2/dotnet/AnalyseSentiment/obj/Debug/net8.0/staticwebassets.development.json
