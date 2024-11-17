@@ -1,32 +1,33 @@
-# **ARI2: Création d'une application d'Analyse de Sentiment avec ML.NET**
+# **ARI2: Création d'une Application d'Analyse de Sentiment avec ML.NET**
 
+## **Introduction**
+Ce projet consiste à créer une application web interactive permettant d'analyser le sentiment d'un texte en utilisant ML.NET, un framework d'apprentissage automatique pour .NET. Cette application prend un commentaire utilisateur, prédit si le sentiment est positif ou négatif et affiche le résultat sur une interface web.
 
-## Introduction
-----------------
+---
 
-Le but de ce TP est la création d'une application de prédiction de sentiment en utilisant ML.NET, un framework d'apprentissage automatique pour .NET.
+## **Prérequis**
+Avant de commencer, assurez-vous que les éléments suivants sont installés et configurés sur votre machine :
 
-![image](https://github.com/user-attachments/assets/238e7704-69e2-48d7-b48d-7746fe9a82f0)
+- **.NET SDK**  
+- **Visual Studio Code**  
+- **Fichier de données** contenant des commentaires étiquetés avec des sentiments (positif/négatif). Le dataset est fourni dans le fichier `commentdata.txt` dans ce repository.
 
+---
 
-## Prérequis
-- .NET SDK .
-- Visual Studio Code.
-- Fichier de données contenant des commentaires avec des étiquettes de sentiments.
+## **Étapes pour la Construction**
 
-## Étapes pour la Construction
--------------------------------
+## 1. Télécharger les Données
+Le fichier `commentdata.txt` contient des commentaires annotés avec des sentiments, où chaque ligne correspond à un commentaire et un label de sentiment (1 = positif, 0 = négatif).  
+- **Origine du dataset** : [Microsoft Learn](https://learn.microsoft.com/).
 
-## **1\. Télécharger les données**
+---
 
-Dans ce repository vous trouverez un fichier (commentdata.txt) contenant un jeu de données annoté avec des sentiments où chaque ligne contient un commentaire et un label de sentiment.
+## 2. Préparer l'Environnement
 
-Origine du dataset est microsoft learn.
-## **2\. Préparer l'environnement**
-
-### a.  Vérifiez si .NET est installé :
-```
-    dotnet --version
+#### a. Vérifiez si .NET est installé
+Utilisez la commande suivante dans votre terminal pour vérifier la version de .NET :
+```bash
+dotnet --version
 ```
 ### b.  Si dotnet n'est pas présent, installez le en suivant  :
 
@@ -50,6 +51,7 @@ Origine du dataset est microsoft learn.
 ```
     cd AnalyseSentiment
 ```
+
 ## 4.  Ajoutez la dépendance ML.NET au projet :
 ```
     dotnet add package Microsoft.ML --version 2.0.0
@@ -60,209 +62,81 @@ Vérifiez que le fichier  'AnalyseSentiment.csproj 'contient cette ligne dans la
 ```xml
     <PackageReference Include="Microsoft.ML" Version="2.0.0" />
 ```
-## 5. Créez un dossier pour les données 
-
-```
-    mkdir Data
-```
-Copier le fichier de données que vous aviez téléchargé dans ce repertoire Data.
-
 * * * * *
 
-## 6 .On commence à construire le Projet Partie par Partie
-
-### **a) Création de la Classe `SentimentData`**
-**Ajoutez un nouveau fichier** dans le projet :
-```bash
-    touch SentimentData.cs
-```
-##### **Partie 1 : On crée un namespace et on déclare la classe pour définir les données**
-
-```
-using Microsoft.ML.Data;
-
-namespace WebsiteCommentPredictor
-{
-    public class SentimentData
-    {
-      
-    }
-}
-
-```
-
-
--   `namespace` : Permet de structurer le code.
--   `using Microsoft.ML.Data` : Nécessaire pour utiliser les annotations comme `[LoadColumn]`.
-
-##### **Partie 2 : Ajouter les Colonnes**
-
-```csharp
-
-[LoadColumn(0)] 
-public string? SentimentText { get; set; } // Texte du commentaire
-
-[LoadColumn(1), ColumnName("Label")] 
-public bool Sentiment { get; set; } // Label (1 = positif, 0 = négatif)
-```
-
--   `[LoadColumn(x)]` : Lie une colonne spécifique du fichier de données.
--   `SentimentText` : Contient le texte du commentaire.
--   `Sentiment` : Contient le label (positif/négatif).
-
-##### **Partie 3 : Prédictions**
-
-```csharp
-public class SentimentPrediction : SentimentData
-{
-    [ColumnName("PredictedLabel")] 
-    public bool Prediction { get; set; }
-
-    public float Probability { get; set; } 
-    public float Score { get; set; } 
-}
-```
-
-
--   `SentimentPrediction` hérite de `SentimentData` pour réutiliser ses propriétés.
--   `Prediction`, `Probability` et `Score` : Données générées par le modèle.
-
-* * * * *
-
-### **b) Charger et Diviser les Données**
-
-Le modèle doit lire et diviser les données avant de s'entraîner.
-
-On doit modifier **Program.cs** :
-
-**1 : Charger les Données**
-
-Ajoutez cette fonction après `Main` :
-
-```csharp
-static DataOperationsCatalog.TrainTestData LoadData(MLContext mlContext, string dataPath)
-{
-    // Charger les données depuis le fichier texte
-    IDataView dataView = mlContext.Data.LoadFromTextFile<SentimentData>(
-        dataPath,
-        hasHeader: false, // Pas d'en-tête dans les données
-        separatorChar: '\t' 
-    );
-
-    // Diviser les données en train/test (80% / 20%)
-    return mlContext.Data.TrainTestSplit(dataView, testFraction: 0.2);
-}
-```
--   `LoadFromTextFile` : Charge les données depuis un fichier texte.
--   `TrainTestSplit` : Divise les données en ensembles d'entraînement et de test.
-
-**2 : Appeler la Fonction dans `Main`**
-
-Ajoutez ces lignes dans `Main` :
-
-```csharp
-string dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "commentdata.txt");
-
-// Création du contexte ML.NET
-MLContext mlContext = new MLContext();
-
-// Charger les données
-var splitDataView = LoadData(mlContext, dataPath);
-```
-
--   `MLContext` : Point d'entrée pour toutes les opérations ML.NET.
--   `dataPath` : Chemin du fichier de données.
--   `splitDataView` : Contient les ensembles d'entraînement et de test.
-
-* * * * *
-
-### **c) Construire et Entraîner le Modèle**
-
-Nous devons configurer un pipeline pour entraîner le modèle.
-
-Ajoutez cette fonction après `LoadData` :
-
-```csharp
-static ITransformer BuildAndTrainModel(MLContext mlContext, IDataView trainData)
-{
-    // Pipeline de transformation des données
-    var pipeline = mlContext.Transforms.Text.FeaturizeText(
-            outputColumnName: "Features", // Convertir le texte en caractéristiques numériques
-            inputColumnName: nameof(SentimentData.SentimentText)) // Colonne d'entrée
-        .Append(mlContext.BinaryClassification.Trainers.SdcaLogisticRegression(
-            labelColumnName: "Label", // Colonne cible
-            featureColumnName: "Features")); // Caractéristiques
-
-    // Entraîner le modèle
-    return pipeline.Fit(trainData);
-}
-```
-
--   `FeaturizeText` : Transforme du texte brut en caractéristiques numériques.
--   `SdcaLogisticRegression` : Algorithme d'entraînement pour classification binaire.
-
-1.  Appelez cette fonction dans `Main` :
-
-```csharp
-ITransformer model = BuildAndTrainModel(mlContext, splitDataView.TrainSet);
-```
-* * * * *
-
-### **d) Ajouter la Prédiction**
-
-Cette fonction permet d'utiliser le modèle pour prédire le sentiment d'un texte.
-Ajoutez cette fonction après `BuildAndTrainModel` :
-```csharp
-
-static void GetPredictionForReviewContent(MLContext mlContext, ITransformer model, string reviewContent)
-{
-    // Créer un moteur de prédiction
-    var predictionEngine = mlContext.Model.CreatePredictionEngine<SentimentData, SentimentPrediction>(model);
-
-    // Préparer les données d'entrée
-    var sampleStatement = new SentimentData
-    {
-        SentimentText = reviewContent
-    };
-
-    // Obtenir la prédiction
-    var prediction = predictionEngine.Predict(sampleStatement);
-
-    // Afficher le résultat
-    Console.WriteLine($"Sentiment prédit : {(prediction.Prediction ? "Positif" : "Négatif")} " +
-                      $"(Probabilité : {prediction.Probability:P2})");
-}
-```
-
-Ajoutez cette boucle dans `Main` pour permettre plusieurs requêtes:
-
-```csharp
-Console.WriteLine("Entrez un commentaire pour analyser le sentiment (Appuyez sur Entrée pour quitter) :");
-while (true)
-{
-    string userInput = Console.ReadLine();
-    if (string.IsNullOrEmpty(userInput)) break;
-
-    GetPredictionForReviewContent(mlContext, model, userInput);
-}
-```
-
-* * * * *
-
-### **e) Compiler et Exécuter**
-
-1.  **Compilation** :
+## 5. Structuter le Projet et ajouter les classes 
+Naviguez dans le dossier du projet et organisez les fichiers nécessaires, en suivant cette structure.
 
 ```bash
-    dotnet build
+
+AnalyseSentiment/ 
+│
+├── Data/                        # Dossier contenant les données
+│   └── commentdata.txt          # Fichier de données des commentaires annotés
+│
+├── Models/                      # Contient les classes de données et de prédiction
+│   ├── SentimentData.cs         # Classes SentimentData et SentimentPrediction
+│
+├── Pages/                       # Pages Razor pour l'interface web
+│   ├── Index.cshtml             # Page principale où les utilisateurs saisissent des commentaires
+│   ├── Index.cshtml.cs          # Code-behind pour la page principale
+│
+├── Services/                    # Services de l'application pour la logique réutilisable
+│   ├── SentimentAnalyzer.cs     # Contient la logique pour l'entraînement et la prédiction des sentiments
+│
+├── wwwroot/                     # Fichiers statiques pour l'application web
+│   ├── css/
+│   │   └── site.css             # Styles personnalisés pour l'interface web
+│
+├── Properties/                  # Répertoire de configuration
+│   └── launchSettings.json      # Configuration pour l'exécution de l'application
+│
+├── AnalyseSentiment.csproj      # Fichier de projet
+│
+├── Program.cs                   # Point d'entrée de l'application
+│
+└── appsettings.json             # Configuration de l'application
+
 ```
 
-2.  **Exécution** :
 
-```bash
-    dotnet run
-```
-* * * * *
+#### **5.1. Dossier pour les Données**  
+- Créez un répertoire `Data` pour stocker les fichiers nécessaires.  
+- Copiez le fichier de données dans ce répertoire.  
+
+#### **5.2. Classe SentimentData **  
+- Dans le dossier Models, ajoutez une classe pour représenter les données et les prédictions (colonnes pour le texte, label, probabilité, etc.).  
+
+#### **5.3. Service **  
+- Implémentez `SentimentService.cs` pour encapsuler la logique :  
+  - Charger les données.  
+  - Diviser en ensembles d'entraînement et de test.  
+  - Construire et entraîner le modèle.  
+  - Ajouter la prédiction.  
+---
+
+## 6. Ajouter une Interface Web 
+
+#### **6.1. Fichiers HTML et Razor**  
+
+- **`Index.cshtml` :**  
+  - Formulaire permettant à l’utilisateur de saisir un commentaire.  
+  - Affichage du résultat de l’analyse de sentiment.  
+
+- **`Index.cshtml.cs` :**  
+  - Logique côté serveur pour traiter le formulaire.  
+  - Connexion avec `SentimentService` pour effectuer les prédictions.  
+
+#### **6.2. CSS pour le Frontend**  
+- **`site.css` :**  
+  - Ajoutez du style pour rendre l'interface utilisateur conviviale et attrayante.  
+
+---
+
+### **7. Compiler et Exécuter**  
+- Compilez le projet avec `dotnet build` pour vérifier les erreurs.  
+- Lancez l'application avec `dotnet run`.  
+- Accédez à l'application via le navigateur à l'URL affichée dans la console.  
 
 
 **Et un grand MERCI !**
