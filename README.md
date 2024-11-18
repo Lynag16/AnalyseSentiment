@@ -77,7 +77,7 @@ AnalyseSentiment/
 │   ├── SentimentData.cs        
 │
 ├── Controllers/                       
-│   ├── SentimentControllers.cs     
+│   ├── SentimentController.cs     
 │ 
 │
 ├── Services/                   
