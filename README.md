@@ -106,7 +106,7 @@ AnalyseSentiment/
 
 ##  Etapes:
 
-**1. Copier le fichier des donees dans Data**
+**1. Copier le fichier des donées dans Data**
 
 **2. Créer une classe SentimentData.cs dans Models pour définir le schéma des données.**
 
@@ -135,6 +135,9 @@ namespace AnalyseSentiment.Models
     }
 }
 ```
+- SentimentData : Cette classe représente les données que nous allons utiliser pour l'entraînement de notre modèle ML. Elle contient les colonnes de texte à analyser et la colonne étiquetée de "Sentiment".
+- SentimentPrediction : Cette classe hérite de SentimentData et représente les résultats de la prédiction effectuée par le modèle après l'entraînement.
+
 
 **3. Créer SentimentService.cs pour gérer le modèle ML.NET.**
 
