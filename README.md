@@ -184,7 +184,7 @@ public SentimentService()
 ```
 
 d. Créer le Modèle
-
+Screenshot from 2024-11-18 10-35-37
 Ajouter la méthode pour construire et entraîner le modèle
 
 ```csharp
@@ -368,7 +368,7 @@ app.Run() : Démarre l'application et commence à écouter les requêtes HTTP.
 - Compilez le projet avec `dotnet build` pour vérifier les erreurs.  
 - Lancez l'application avec `dotnet run`.  
 
-
+Screenshot from 2024-11-18 10-35-37
 
 ### **7. Tester**  
 ```bash
@@ -377,6 +377,7 @@ curl -X POST http://localhost:5121/api/sentiment/predict \
 -d "\"I love this product! It's amazing.\""
 
 ```
+![image](https://github.com/user-attachments/assets/66c928c8-cb2c-4fda-9e8c-ec81f587692d)
 
 
 **Et un grand MERCI !**
