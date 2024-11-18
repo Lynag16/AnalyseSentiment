@@ -53,16 +53,13 @@ dotnet --version
 ```
 
 ## 4.  Ajoutez les dépendances :
-```
-    dotnet add package Microsoft.ML --version 2.0.0
-    dotnet add package Microsoft.ML.AspNetCore
-``` 
 
-Vérifiez que le fichier  'AnalyseSentiment.csproj 'contient cette ligne dans la section <ItemGroup> pour inclure ML.NET, sinon ajoutez la. 
+ Ajouter dans le fichier  'AnalyseSentiment.csproj ': 
 
 ```xml
-    <PackageReference Include="Microsoft.ML" Version="2.0.0" />
+    <PackageReference Include="Microsoft.ML" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.0.0" />
+    <PackageReference Include="Microsoft.ML.LightGBM" Version="4.0.0" />
 ```
 * * * * *
 
